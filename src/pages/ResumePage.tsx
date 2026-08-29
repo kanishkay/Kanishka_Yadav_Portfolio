@@ -10,90 +10,90 @@ export function ResumePage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-10 pb-16">
+    <div className="space-y-6">
       {/* Header Actions */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/5 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-800 pb-4">
         <div>
-          <span className="text-xs font-mono font-semibold uppercase tracking-widest text-teal-400">
+          <span className="text-xs font-mono font-medium text-blue-400">
             Curriculum Vitae
           </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-zinc-100 tracking-tight">
             Interactive Résumé
-          </h1>
+          </h2>
         </div>
 
         <div className="flex items-center gap-3">
           <button
             onClick={handleDownloadPDF}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-xs shadow-lg hover:bg-[#e1e1e1] transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-100 text-zinc-950 font-mono font-semibold text-xs shadow hover:bg-white transition-colors cursor-pointer"
           >
-            <Printer className="w-4 h-4" />
+            <Printer className="w-3.5 h-3.5" />
             <span>Print / Save PDF</span>
           </button>
         </div>
       </div>
 
       {/* Printable Resume Card */}
-      <div className="p-8 sm:p-12 rounded-[32px] bg-[#0f0f0f] border border-white/10 space-y-8 shadow-2xl print:shadow-none print:border-none print:p-0 print:bg-white print:text-black">
+      <div className="p-6 sm:p-10 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-6 shadow-sm print:shadow-none print:border-none print:p-0 print:bg-white print:text-black">
         {/* Contact Header */}
-        <div className="border-b border-white/5 print:border-black/10 pb-6 space-y-2">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div className="border-b border-zinc-800 print:border-black/10 pb-5 space-y-2">
+          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
             <div>
-              <h2 className="text-3xl font-extrabold text-white print:text-black">{PERSONAL_INFO.name}</h2>
-              <p className="text-sm font-semibold text-teal-400 print:text-black font-mono">
+              <h3 className="text-2xl font-bold text-zinc-100 print:text-black">{PERSONAL_INFO.name}</h3>
+              <p className="text-xs font-medium text-blue-400 print:text-black font-mono">
                 {PERSONAL_INFO.tagline}
               </p>
             </div>
-            <div className="text-xs font-mono text-[#a1a1a1] print:text-black space-y-1 text-left sm:text-right">
-              <p className="flex items-center sm:justify-end gap-1.5"><Mail className="w-3.5 h-3.5 text-blue-400 print:text-black" /> {PERSONAL_INFO.socials.email}</p>
-              <p className="flex items-center sm:justify-end gap-1.5"><MapPin className="w-3.5 h-3.5 text-teal-400 print:text-black" /> {PERSONAL_INFO.location}</p>
-              <p className="flex items-center sm:justify-end gap-1.5"><Globe className="w-3.5 h-3.5 text-emerald-400 print:text-black" /> github.com/kanishkay</p>
+            <div className="text-xs font-mono text-zinc-400 print:text-black space-y-0.5 text-left sm:text-right">
+              <p className="flex items-center sm:justify-end gap-1.5"><Mail className="w-3 h-3 text-blue-400 print:text-black" /> {PERSONAL_INFO.socials.email}</p>
+              <p className="flex items-center sm:justify-end gap-1.5"><MapPin className="w-3 h-3 text-zinc-400 print:text-black" /> {PERSONAL_INFO.location}</p>
+              <p className="flex items-center sm:justify-end gap-1.5"><Globe className="w-3 h-3 text-emerald-400 print:text-black" /> github.com/kanishkay</p>
             </div>
           </div>
         </div>
 
         {/* Education */}
-        <section className="space-y-3">
-          <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-teal-400 print:text-black flex items-center gap-2 border-b border-white/5 print:border-black/10 pb-1">
-            <GraduationCap className="w-4 h-4" />
-            <span>Education and Fellowship</span>
-          </h3>
+        <section className="space-y-2.5">
+          <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-300 print:text-black flex items-center gap-1.5 border-b border-zinc-800/80 print:border-black/10 pb-1">
+            <GraduationCap className="w-3.5 h-3.5 text-blue-400" />
+            <span>Education & Fellowship</span>
+          </h4>
           {EDUCATION.map((edu, idx) => (
-            <div key={idx} className="space-y-1">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-sm font-bold text-white print:text-black">
+            <div key={idx} className="space-y-0.5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-bold text-zinc-200 print:text-black">
                 <span>{edu.institution} &bull; {edu.degree} {edu.major ? `(${edu.major})` : ''}</span>
-                <span className="text-xs font-mono font-normal text-[#717171] print:text-black">{edu.period}</span>
+                <span className="text-[11px] font-mono font-normal text-zinc-500 print:text-black">{edu.period}</span>
               </div>
-              <p className="text-xs text-[#a1a1a1] print:text-black">
-                <strong>Focus Areas:</strong> {edu.relevantCoursework.join(', ')}
+              <p className="text-xs text-zinc-400 print:text-black leading-relaxed">
+                <span className="text-zinc-300">Focus:</span> {edu.relevantCoursework.join(', ')}
               </p>
             </div>
           ))}
         </section>
 
         {/* Experience */}
-        <section className="space-y-4">
-          <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-teal-400 print:text-black flex items-center gap-2 border-b border-white/5 print:border-black/10 pb-1">
-            <Briefcase className="w-4 h-4" />
+        <section className="space-y-3">
+          <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-300 print:text-black flex items-center gap-1.5 border-b border-zinc-800/80 print:border-black/10 pb-1">
+            <Briefcase className="w-3.5 h-3.5 text-blue-400" />
             <span>Experience</span>
-          </h3>
+          </h4>
 
-          <div className="space-y-5">
+          <div className="space-y-4">
             {EXPERIENCES.map((exp) => (
-              <div key={exp.id} className="space-y-1.5">
+              <div key={exp.id} className="space-y-1">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between">
-                  <span className="text-sm font-bold text-white print:text-black">
+                  <span className="text-xs font-bold text-zinc-200 print:text-black">
                     {exp.role} — <span className="text-blue-400 print:text-black">{exp.companyOrOrg}</span>
                   </span>
-                  <span className="text-xs font-mono text-[#717171] print:text-black">
+                  <span className="text-[11px] font-mono text-zinc-500 print:text-black">
                     {exp.period}{exp.location ? ` | ${exp.location}` : ''}
                   </span>
                 </div>
-                <ul className="space-y-1 text-xs text-[#a1a1a1] print:text-black">
+                <ul className="space-y-1 text-xs text-zinc-400 print:text-black">
                   {exp.responsibilities.map((r, rIdx) => (
                     <li key={rIdx} className="flex items-start gap-1.5">
-                      <span className="text-teal-400 font-bold">&bull;</span>
-                      <span>{r}</span>
+                      <span className="text-zinc-500 font-bold">&bull;</span>
+                      <span className="leading-relaxed">{r}</span>
                     </li>
                   ))}
                 </ul>
@@ -103,20 +103,20 @@ export function ResumePage() {
         </section>
 
         {/* Key Projects */}
-        <section className="space-y-4">
-          <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-teal-400 print:text-black flex items-center gap-2 border-b border-white/5 print:border-black/10 pb-1">
-            <FolderCheck className="w-4 h-4" />
+        <section className="space-y-3">
+          <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-300 print:text-black flex items-center gap-1.5 border-b border-zinc-800/80 print:border-black/10 pb-1">
+            <FolderCheck className="w-3.5 h-3.5 text-blue-400" />
             <span>Key Projects</span>
-          </h3>
+          </h4>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {PROJECTS.map((proj) => (
-              <div key={proj.id} className="space-y-1">
-                <div className="flex items-center justify-between text-sm font-bold text-white print:text-black">
+              <div key={proj.id} className="space-y-0.5">
+                <div className="flex items-center justify-between text-xs font-bold text-zinc-200 print:text-black">
                   <span>{proj.title}</span>
-                  <span className="text-xs font-mono text-[#717171] print:text-black">{proj.technologies.slice(0, 5).join(', ')}</span>
+                  <span className="text-[10px] font-mono text-zinc-500 print:text-black">{proj.technologies.slice(0, 5).join(', ')}</span>
                 </div>
-                <p className="text-xs text-[#a1a1a1] print:text-black">{proj.description}</p>
+                <p className="text-xs text-zinc-400 print:text-black leading-relaxed">{proj.description}</p>
               </div>
             ))}
           </div>
@@ -124,19 +124,20 @@ export function ResumePage() {
 
         {/* Skills Summary */}
         <section className="space-y-2">
-          <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-teal-400 print:text-black flex items-center gap-2 border-b border-white/5 print:border-black/10 pb-1">
-            <Code2 className="w-4 h-4" />
+          <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-300 print:text-black flex items-center gap-1.5 border-b border-zinc-800/80 print:border-black/10 pb-1">
+            <Code2 className="w-3.5 h-3.5 text-blue-400" />
             <span>Technical Skills</span>
-          </h3>
-          <div className="text-xs text-[#a1a1a1] print:text-black space-y-1">
-            <p><strong>Languages:</strong> Python, Java, C++, SQL, R, HTML, TypeScript</p>
-            <p><strong>AI & Machine Learning:</strong> TensorFlow, PyTorch, Scikit-learn, SentenceTransformers, NLTK, IBM watsonx.ai, NVIDIA Nemotron, Gemini API, RAG, Semantic search, Vector embeddings, Multi-agent systems, Computer-use agents, Explainable AI</p>
-            <p><strong>Backend & Web:</strong> Flask, Express, Next.js, React, Vite, REST APIs, API integration</p>
-            <p><strong>Databases & Storage:</strong> PostgreSQL, MySQL, SQLite, sqlite-vec, Flat-file JSON storage, Relational database design</p>
-            <p><strong>Infrastructure & Tools:</strong> Git, GitHub, Docker, Docker Compose, Kubernetes, Ansible, Vercel, Google Cloud Run, Visual Studio Code</p>
+          </h4>
+          <div className="text-xs text-zinc-400 print:text-black space-y-1 leading-relaxed">
+            <p><strong className="text-zinc-200">Languages:</strong> Python, Java, C++, SQL, R, HTML, TypeScript</p>
+            <p><strong className="text-zinc-200">AI & Machine Learning:</strong> TensorFlow, PyTorch, Scikit-learn, SentenceTransformers, NLTK, IBM watsonx.ai, NVIDIA Nemotron, Gemini API, RAG, Semantic search, Vector embeddings, Multi-agent systems, Computer-use agents, Explainable AI</p>
+            <p><strong className="text-zinc-200">Backend & Web:</strong> Flask, Express, Next.js, React, Vite, REST APIs, API integration</p>
+            <p><strong className="text-zinc-200">Databases & Storage:</strong> PostgreSQL, MySQL, SQLite, sqlite-vec, Flat-file JSON storage, Relational database design</p>
+            <p><strong className="text-zinc-200">Infrastructure & Tools:</strong> Git, GitHub, Docker, Docker Compose, Kubernetes, Ansible, Vercel, Google Cloud Run, Visual Studio Code</p>
           </div>
         </section>
       </div>
     </div>
   );
 }
+

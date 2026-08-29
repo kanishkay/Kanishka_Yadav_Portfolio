@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Sun, Moon, Sparkles, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export type NavSectionId = 'home' | 'experience' | 'projects' | 'about' | 'skills' | 'education' | 'writing' | 'resume' | 'contact';
+export type NavSectionId = 'home' | 'projects' | 'experience' | 'skills' | 'writing' | 'resume' | 'contact';
 
 interface NavbarProps {
   activeSection: string;
@@ -16,6 +16,7 @@ const NAV_ITEMS: { id: NavSectionId; label: string }[] = [
   { id: 'home', label: 'Home' },
   { id: 'projects', label: 'Projects' },
   { id: 'experience', label: 'Experience' },
+  { id: 'skills', label: 'Skills' },
   { id: 'writing', label: 'Writing' },
   { id: 'resume', label: 'Résumé' },
   { id: 'contact', label: 'Contact' },
@@ -26,45 +27,45 @@ export function Navbar({ activeSection, onNavigate, theme, toggleTheme, onOpenAI
 
   return (
     <header className="sticky top-0 z-40 w-full px-3 sm:px-4 py-3 transition-all">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2.5 rounded-full bg-[#0a0a0c]/85 border border-white/10 backdrop-blur-md shadow-xl shadow-black/40">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-2.5 rounded-2xl bg-[#09090b]/80 border border-zinc-800/80 backdrop-blur-md shadow-lg shadow-black/20">
         {/* Brand / Logo */}
         <button
           onClick={() => onNavigate('home')}
           className="flex items-center gap-2.5 group text-left focus:outline-none cursor-pointer"
         >
-          <div className="w-8 h-8 rounded-lg bg-white text-black font-mono font-bold text-xs flex items-center justify-center group-hover:scale-105 transition-transform shadow-md">
+          <div className="w-7 h-7 rounded-lg bg-zinc-100 text-zinc-950 font-mono font-bold text-xs flex items-center justify-center transition-opacity hover:opacity-90">
             KY
           </div>
           <div>
-            <div className="text-sm font-bold tracking-tight text-white flex items-center gap-1.5">
+            <div className="text-sm font-semibold tracking-tight text-zinc-100 flex items-center gap-1.5">
               Kanishka Yadav
-              <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" title="Seeking Summer 2027 Internships" />
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500" title="Summer 2027 Internships" />
             </div>
-            <div className="text-[10px] font-mono text-[#a1a1a1]">
+            <div className="text-[11px] font-mono text-zinc-400">
               SJSU Data Science &apos;27
             </div>
           </div>
         </button>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-0.5 bg-[#111113]/90 p-1 rounded-full border border-white/10">
+        <nav className="hidden lg:flex items-center gap-1 bg-zinc-900/60 p-1 rounded-xl border border-zinc-800/60">
           {NAV_ITEMS.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`relative px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200 focus:outline-none cursor-pointer ${
+                className={`relative px-3 py-1 text-xs font-medium rounded-lg transition-colors focus:outline-none cursor-pointer ${
                   isActive
-                    ? 'text-white font-semibold'
-                    : 'text-[#a1a1a1] hover:text-white'
+                    ? 'text-zinc-100 font-semibold'
+                    : 'text-zinc-400 hover:text-zinc-200'
                 }`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeTabPill"
-                    className="absolute inset-0 rounded-full bg-white/10 border border-white/15"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    className="absolute inset-0 rounded-lg bg-zinc-800 border border-zinc-700/60"
+                    transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
                 <span className="relative z-10">{item.label}</span>
@@ -77,28 +78,28 @@ export function Navbar({ activeSection, onNavigate, theme, toggleTheme, onOpenAI
         <div className="flex items-center gap-2">
           <button
             onClick={onOpenAIAssistant}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-xs font-medium transition-all duration-200 focus:outline-none cursor-pointer group"
-            title="Ask Kanishka's AI Assistant questions"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900/70 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 text-xs font-medium transition-colors focus:outline-none cursor-pointer"
+            title="Ask Kanishka's AI Assistant"
           >
-            <Sparkles className="w-3.5 h-3.5 text-blue-400 group-hover:rotate-12 transition-transform" />
+            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
             <span className="hidden sm:inline">AI Concierge</span>
           </button>
 
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full text-[#a1a1a1] hover:text-white hover:bg-white/5 transition-colors focus:outline-none cursor-pointer"
+            className="p-2 rounded-lg text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900 transition-colors focus:outline-none cursor-pointer"
             aria-label="Toggle dark mode"
           >
-            {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-300" />}
+            {theme === 'dark' ? <Sun className="w-4 h-4 text-zinc-300" /> : <Moon className="w-4 h-4 text-zinc-400" />}
           </button>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-full text-[#a1a1a1] hover:text-white hover:bg-white/5 transition-colors focus:outline-none cursor-pointer"
+            className="lg:hidden p-2 rounded-lg text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900 transition-colors focus:outline-none cursor-pointer"
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
         </div>
       </div>
@@ -107,12 +108,13 @@ export function Navbar({ activeSection, onNavigate, theme, toggleTheme, onOpenAI
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden mt-2 rounded-2xl bg-[#0f0f11]/95 border border-white/10 backdrop-blur-xl p-4 shadow-2xl overflow-hidden"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.15 }}
+            className="lg:hidden mt-2 rounded-xl bg-zinc-900 border border-zinc-800 p-3 shadow-xl overflow-hidden"
           >
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 gap-1.5">
               {NAV_ITEMS.map((item) => (
                 <button
                   key={item.id}
@@ -120,10 +122,10 @@ export function Navbar({ activeSection, onNavigate, theme, toggleTheme, onOpenAI
                     onNavigate(item.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`px-3 py-2 text-center rounded-xl text-xs font-medium transition-colors cursor-pointer ${
+                  className={`px-3 py-2 text-left rounded-lg text-xs font-medium transition-colors cursor-pointer ${
                     activeSection === item.id
-                      ? 'bg-white text-black font-bold'
-                      : 'text-[#a1a1a1] hover:bg-white/5 hover:text-white'
+                      ? 'bg-zinc-800 text-zinc-100 font-semibold'
+                      : 'text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200'
                   }`}
                 >
                   {item.label}
@@ -136,3 +138,4 @@ export function Navbar({ activeSection, onNavigate, theme, toggleTheme, onOpenAI
     </header>
   );
 }
+

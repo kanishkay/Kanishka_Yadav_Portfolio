@@ -44,42 +44,43 @@ const PRINCIPLES: Principle[] = [
 
 export function EngineeringPrinciplesSection() {
   return (
-    <section id="principles" className="space-y-8 scroll-mt-24 pt-6">
-      <div className="space-y-2">
-        <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-widest text-teal-400">
-          <Compass className="w-3.5 h-3.5 text-teal-400" />
+    <div className="space-y-6">
+      <div className="space-y-1">
+        <div className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-blue-400">
+          <Compass className="w-3.5 h-3.5 text-blue-400" />
           <span>Core Philosophy</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-bold text-zinc-100 tracking-tight">
           Engineering Principles
         </h2>
-        <p className="text-[#a1a1a1] text-sm sm:text-base max-w-2xl">
+        <p className="text-zinc-400 text-xs sm:text-sm max-w-2xl">
           Guidelines that inform how I design software, architect agentic pipelines, and build AI infrastructure.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {PRINCIPLES.map((principle, idx) => {
           const IconComponent = principle.icon;
           return (
             <motion.div
               key={idx}
-              whileHover={{ y: -3 }}
-              className="p-6 rounded-[24px] bg-[#0f0f11] border border-white/10 hover:border-white/20 transition-all shadow-xl flex flex-col justify-between space-y-4"
+              whileHover={{ y: -2 }}
+              transition={{ duration: 0.15 }}
+              className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 hover:border-zinc-700 transition-colors flex flex-col justify-between space-y-3 shadow-sm"
             >
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 <div className="flex items-center justify-between">
-                  <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-teal-400">
-                    <IconComponent className="w-5 h-5" />
+                  <div className="p-2 rounded-xl bg-zinc-800/80 border border-zinc-700/60 text-blue-400">
+                    <IconComponent className="w-4 h-4" />
                   </div>
-                  <span className="text-xs font-mono font-bold text-[#515151]">
+                  <span className="text-xs font-mono font-bold text-zinc-500">
                     {principle.number}
                   </span>
                 </div>
-                <h3 className="text-lg font-bold text-white tracking-tight">
+                <h3 className="text-base font-bold text-zinc-100 tracking-tight">
                   {principle.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#a1a1a1] leading-relaxed font-normal">
+                <p className="text-xs text-zinc-400 leading-relaxed font-normal">
                   {principle.description}
                 </p>
               </div>
@@ -87,6 +88,7 @@ export function EngineeringPrinciplesSection() {
           );
         })}
       </div>
-    </section>
+    </div>
   );
 }
+

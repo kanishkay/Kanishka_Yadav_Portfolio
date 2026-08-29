@@ -26,27 +26,27 @@ const EXPLORING_TOPICS = [
 
 export function CurrentlyExploringSection() {
   return (
-    <section id="exploring" className="space-y-6 scroll-mt-24 pt-4">
+    <div className="space-y-6">
       <div className="space-y-1">
-        <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-widest text-teal-400">
-          <Compass className="w-3.5 h-3.5 text-teal-400" />
-          <span>Active Learning & Technical Curiosity</span>
+        <div className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-blue-400">
+          <Compass className="w-3.5 h-3.5 text-blue-400" />
+          <span>Active Learning & Research</span>
         </div>
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-bold text-zinc-100 tracking-tight">
           Currently Exploring
         </h2>
       </div>
 
-      <div className="p-6 sm:p-8 rounded-[24px] bg-[#0f0f11] border border-white/10 shadow-xl space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 shadow-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
           {EXPLORING_TOPICS.map((topic, idx) => (
-            <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-white/5 border border-white/5">
-              <Sparkles className="w-4 h-4 text-teal-400 shrink-0 mt-0.5" />
+            <div key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-zinc-950/60 border border-zinc-800/80">
+              <Sparkles className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
               <div className="space-y-0.5">
-                <h3 className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+                <h3 className="text-xs font-mono font-semibold text-zinc-100 uppercase tracking-wide">
                   {topic.title}
                 </h3>
-                <p className="text-xs text-[#a1a1a1] leading-relaxed">
+                <p className="text-xs text-zinc-400 leading-relaxed">
                   {topic.description}
                 </p>
               </div>
@@ -54,6 +54,7 @@ export function CurrentlyExploringSection() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
+

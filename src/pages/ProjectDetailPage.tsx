@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Github, ExternalLink, Code2, Cpu, AlertTriangle, CheckCircle, Lightbulb, Compass, Copy, Check, Terminal } from 'lucide-react';
-import { motion } from 'motion/react';
 import { Project } from '../types/portfolio';
 
 interface ProjectDetailPageProps {
@@ -22,48 +21,48 @@ export function ProjectDetailPage({ project, onBack }: ProjectDetailPageProps) {
   };
 
   return (
-    <div className="max-w-5xl mx-auto space-y-12 py-6 pb-20">
+    <div className="space-y-8 py-2 pb-16">
       {/* Back Button */}
       <button
         onClick={onBack}
-        className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[#a1a1a1] hover:text-white transition-colors"
+        className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-zinc-400 hover:text-zinc-100 transition-colors cursor-pointer"
       >
-        <ArrowLeft className="w-4 h-4" />
-        <span>Back to Projects Overview</span>
+        <ArrowLeft className="w-3.5 h-3.5" />
+        <span>Back to Projects</span>
       </button>
 
       {/* Hero Header */}
-      <div className="space-y-6">
-        <div className="flex flex-wrap gap-2">
+      <div className="space-y-4">
+        <div className="flex flex-wrap gap-1.5">
           {project.category.map((cat, idx) => (
             <span
               key={idx}
-              className="px-3 py-1 rounded-full text-xs font-mono font-bold bg-white/5 text-[#a1a1a1] border border-white/10"
+              className="px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-zinc-800/80 text-zinc-300 border border-zinc-700/60"
             >
               {cat}
             </span>
           ))}
         </div>
 
-        <div className="space-y-3">
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        <div className="space-y-2">
+          <h1 className="text-2xl sm:text-4xl font-bold text-zinc-100 tracking-tight">
             {project.title}
           </h1>
-          <p className="text-lg sm:text-xl font-light text-[#a1a1a1] max-w-3xl leading-relaxed">
+          <p className="text-sm sm:text-base font-normal text-zinc-300 max-w-3xl leading-relaxed">
             {project.tagline}
           </p>
         </div>
 
         {/* Action Links */}
-        <div className="flex flex-wrap items-center gap-3 pt-2">
+        <div className="flex flex-wrap items-center gap-2.5 pt-1">
           {project.githubUrl && (
             <a
               href={project.githubUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#111111] border border-white/10 hover:border-white/30 text-white text-xs font-mono font-medium transition-colors"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-200 text-xs font-mono font-medium transition-colors"
             >
-              <Github className="w-4 h-4" />
+              <Github className="w-3.5 h-3.5" />
               <span>GitHub Repository</span>
             </a>
           )}
@@ -72,68 +71,27 @@ export function ProjectDetailPage({ project, onBack }: ProjectDetailPageProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-bold hover:bg-[#e1e1e1] text-xs font-mono transition-colors shadow-md"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-zinc-100 text-zinc-950 font-semibold hover:bg-white text-xs font-mono transition-colors shadow-sm"
             >
-              <ExternalLink className="w-4 h-4" />
+              <ExternalLink className="w-3.5 h-3.5" />
               <span>Live Application</span>
             </a>
           )}
         </div>
       </div>
 
-      {/* Visual Asset Previews & Screenshots Section */}
-      <div className="p-6 sm:p-8 rounded-[32px] bg-[#0f0f11] border border-white/10 space-y-4 shadow-xl">
-        <div className="flex items-center justify-between border-b border-white/5 pb-3">
-          <div className="flex items-center gap-2 text-xs font-mono font-bold text-teal-400">
-            <Cpu className="w-4 h-4" />
-            <span>Product & System Visuals</span>
-          </div>
-          <span className="text-[10px] font-mono text-[#717171]">UI & Workflow Previews</span>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 font-mono text-xs">
-          <div className="p-4 rounded-2xl bg-black/60 border border-white/10 space-y-2">
-            <div className="text-[10px] text-teal-400 font-bold uppercase tracking-wider">01 // Hero Screenshot</div>
-            <div className="h-28 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-[10px] text-[#717171] text-center p-2">
-              [Product Interface Preview]
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-black/60 border border-white/10 space-y-2">
-            <div className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">02 // Architecture Diagram</div>
-            <div className="h-28 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-[10px] text-[#717171] text-center p-2">
-              [Pipeline Data Flow Graph]
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-black/60 border border-white/10 space-y-2">
-            <div className="text-[10px] text-purple-400 font-bold uppercase tracking-wider">03 // Workflow Diagram</div>
-            <div className="h-28 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-[10px] text-[#717171] text-center p-2">
-              [Agent Execution Sequence]
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-black/60 border border-white/10 space-y-2">
-            <div className="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">04 // Demo Video</div>
-            <div className="h-28 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-[10px] text-[#717171] text-center p-2">
-              [Interactive Screencast]
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Key Metrics Grid */}
       {project.metrics && project.metrics.length > 0 && (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {project.metrics.map((m, idx) => (
             <div
               key={idx}
-              className="p-5 rounded-2xl bg-[#0f0f0f] border border-white/10 shadow-md"
+              className="p-4 rounded-xl bg-zinc-900/40 border border-zinc-800/80 shadow-sm"
             >
-              <span className="text-2xl sm:text-3xl font-extrabold font-mono text-teal-400 italic">
+              <span className="text-xl sm:text-2xl font-bold font-mono text-zinc-100">
                 {m.value}
               </span>
-              <span className="block text-[10px] font-semibold text-[#a1a1a1] uppercase tracking-widest mt-1">
+              <span className="block text-[10px] font-mono text-zinc-400 uppercase tracking-wider mt-1">
                 {m.label}
               </span>
             </div>
@@ -141,24 +99,58 @@ export function ProjectDetailPage({ project, onBack }: ProjectDetailPageProps) {
         </div>
       )}
 
+      {/* Visual Asset Previews & Screenshots Section */}
+      <div className="p-5 sm:p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-3.5 shadow-sm">
+        <div className="flex items-center justify-between border-b border-zinc-800/80 pb-2.5">
+          <div className="flex items-center gap-1.5 text-xs font-mono font-medium text-blue-400">
+            <Cpu className="w-3.5 h-3.5" />
+            <span>Product & System Architecture</span>
+          </div>
+          <span className="text-[10px] font-mono text-zinc-500">Visual Overview</span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+          <div className="p-3.5 rounded-xl bg-zinc-950/70 border border-zinc-800/80 space-y-2">
+            <div className="text-[10px] text-blue-400 font-semibold uppercase tracking-wider">01 // Product Interface</div>
+            <div className="h-24 rounded-lg bg-zinc-900/60 border border-zinc-800/60 flex items-center justify-center text-[10px] text-zinc-400 text-center p-2">
+              Clean UI with state visualization & real-time response view
+            </div>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-zinc-950/70 border border-zinc-800/80 space-y-2">
+            <div className="text-[10px] text-emerald-400 font-semibold uppercase tracking-wider">02 // System Data Flow</div>
+            <div className="h-24 rounded-lg bg-zinc-900/60 border border-zinc-800/60 flex items-center justify-center text-[10px] text-zinc-400 text-center p-2">
+              Embedding generation &rarr; Vector search &rarr; Reranking &rarr; Generation
+            </div>
+          </div>
+
+          <div className="p-3.5 rounded-xl bg-zinc-950/70 border border-zinc-800/80 space-y-2">
+            <div className="text-[10px] text-purple-400 font-semibold uppercase tracking-wider">03 // Agent Orchestration</div>
+            <div className="h-24 rounded-lg bg-zinc-900/60 border border-zinc-800/60 flex items-center justify-center text-[10px] text-zinc-400 text-center p-2">
+              Planner &bull; Tool Executor &bull; Evaluator &bull; Fallback Loop
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Overview & Problem Solved */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="p-6 rounded-[32px] bg-[#0f0f0f] border border-white/10 space-y-3">
-          <h3 className="text-base font-bold text-white flex items-center gap-2">
-            <Compass className="w-4 h-4 text-blue-400" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-2.5">
+          <h3 className="text-sm font-bold text-zinc-100 flex items-center gap-1.5">
+            <Compass className="w-3.5 h-3.5 text-blue-400" />
             <span>Project Overview</span>
           </h3>
-          <p className="text-xs sm:text-sm text-[#a1a1a1] leading-relaxed">
+          <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
             {project.description}
           </p>
         </div>
 
-        <div className="p-6 rounded-[32px] bg-amber-500/5 border border-amber-500/20 space-y-3">
-          <h3 className="text-base font-bold text-amber-300 flex items-center gap-2">
-            <AlertTriangle className="w-4 h-4 text-amber-400" />
+        <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-2.5">
+          <h3 className="text-sm font-bold text-zinc-100 flex items-center gap-1.5">
+            <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
             <span>Problem Solved</span>
           </h3>
-          <p className="text-xs sm:text-sm text-amber-200/80 leading-relaxed">
+          <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
             {project.problemSolved}
           </p>
         </div>
@@ -166,20 +158,20 @@ export function ProjectDetailPage({ project, onBack }: ProjectDetailPageProps) {
 
       {/* Architecture Diagram Section */}
       {project.architectureDiagram && (
-        <section className="p-6 sm:p-8 rounded-[32px] bg-[#0f0f0f] text-white border border-white/10 space-y-4 shadow-xl">
+        <section className="p-5 sm:p-6 rounded-2xl bg-zinc-900/40 text-zinc-100 border border-zinc-800/80 space-y-3 shadow-sm">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-mono font-bold uppercase tracking-wider text-teal-400 flex items-center gap-2">
-              <Cpu className="w-4 h-4" />
+            <h3 className="text-xs font-mono font-semibold uppercase tracking-wider text-blue-400 flex items-center gap-1.5">
+              <Cpu className="w-3.5 h-3.5" />
               <span>System Architecture & Data Flow</span>
             </h3>
-            <span className="text-[10px] font-mono text-[#717171]">ASCII / Flow Diagram</span>
+            <span className="text-[10px] font-mono text-zinc-500">ASCII Architecture Graph</span>
           </div>
-          <div className="p-4 rounded-2xl bg-black border border-white/10 overflow-x-auto">
-            <pre className="font-mono text-[11px] sm:text-xs leading-relaxed text-blue-300 whitespace-pre">
+          <div className="p-3.5 rounded-xl bg-zinc-950/90 border border-zinc-800/80 overflow-x-auto">
+            <pre className="font-mono text-[11px] leading-relaxed text-zinc-300 whitespace-pre">
               {project.architectureDiagram}
             </pre>
           </div>
-          <p className="text-xs text-[#a1a1a1] leading-relaxed">
+          <p className="text-xs text-zinc-400 leading-relaxed">
             {project.architectureSummary}
           </p>
         </section>
@@ -187,11 +179,11 @@ export function ProjectDetailPage({ project, onBack }: ProjectDetailPageProps) {
 
       {/* Code Snippets Viewer */}
       {project.codeSnippets && project.codeSnippets.length > 0 && currentSnippet && (
-        <section className="p-6 rounded-[32px] bg-[#0f0f0f] text-white border border-white/10 space-y-4">
-          <div className="flex items-center justify-between border-b border-white/5 pb-3">
+        <section className="p-5 sm:p-6 rounded-2xl bg-zinc-900/40 text-zinc-100 border border-zinc-800/80 space-y-3">
+          <div className="flex items-center justify-between border-b border-zinc-800/80 pb-2.5">
             <div className="flex items-center gap-2">
-              <Terminal className="w-4 h-4 text-emerald-400" />
-              <span className="text-xs font-mono font-bold text-white">
+              <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="text-xs font-mono font-medium text-zinc-200">
                 {currentSnippet.filename}
               </span>
             </div>
@@ -199,53 +191,53 @@ export function ProjectDetailPage({ project, onBack }: ProjectDetailPageProps) {
             <div className="flex items-center gap-2">
               <button
                 onClick={handleCopyCode}
-                className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-[11px] font-mono text-white transition-colors border border-white/10"
+                className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-zinc-800/80 hover:bg-zinc-700/80 text-[11px] font-mono text-zinc-300 transition-colors border border-zinc-700/60 cursor-pointer"
               >
-                {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                {copied ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
                 <span>{copied ? 'Copied' : 'Copy'}</span>
               </button>
             </div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-black border border-white/10 overflow-x-auto">
-            <pre className="font-mono text-xs text-emerald-300 leading-relaxed">
+          <div className="p-3.5 rounded-xl bg-zinc-950/90 border border-zinc-800/80 overflow-x-auto">
+            <pre className="font-mono text-xs text-emerald-300/90 leading-relaxed">
               <code>{currentSnippet.code}</code>
             </pre>
           </div>
 
-          <p className="text-xs text-[#a1a1a1] italic">
-            <strong className="text-white">Implementation Note:</strong> {currentSnippet.explanation}
+          <p className="text-xs text-zinc-400">
+            <strong className="text-zinc-200">Implementation Note:</strong> {currentSnippet.explanation}
           </p>
         </section>
       )}
 
       {/* Key Features & Tech Stack */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="p-6 rounded-[32px] bg-[#0f0f0f] border border-white/10 space-y-4">
-          <h3 className="text-base font-bold text-white flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-emerald-400" />
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-3">
+          <h3 className="text-sm font-bold text-zinc-100 flex items-center gap-1.5">
+            <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
             <span>Key Engineering Features</span>
           </h3>
-          <ul className="space-y-2 text-xs sm:text-sm text-[#a1a1a1]">
+          <ul className="space-y-1.5 text-xs sm:text-sm text-zinc-400">
             {project.keyFeatures.map((feat, idx) => (
               <li key={idx} className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0 mt-1.5" />
-                <span>{feat}</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0 mt-1.5" />
+                <span className="leading-relaxed">{feat}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="p-6 rounded-[32px] bg-[#0f0f0f] border border-white/10 space-y-4">
-          <h3 className="text-base font-bold text-white flex items-center gap-2">
-            <Code2 className="w-4 h-4 text-purple-400" />
+        <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-3">
+          <h3 className="text-sm font-bold text-zinc-100 flex items-center gap-1.5">
+            <Code2 className="w-3.5 h-3.5 text-purple-400" />
             <span>Technologies & Libraries</span>
           </h3>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5">
             {project.technologies.map((tech, idx) => (
               <span
                 key={idx}
-                className="px-3 py-1 rounded-xl text-xs font-mono font-medium bg-white/5 text-[#a1a1a1] border border-white/10"
+                className="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-zinc-800/60 text-zinc-300 border border-zinc-700/50"
               >
                 {tech}
               </span>
@@ -255,24 +247,24 @@ export function ProjectDetailPage({ project, onBack }: ProjectDetailPageProps) {
       </section>
 
       {/* Engineering Decisions & Tradeoffs */}
-      <section className="p-6 sm:p-8 rounded-[32px] bg-[#0f0f0f] border border-white/10 space-y-6">
-        <div className="space-y-1">
-          <span className="text-xs font-mono uppercase text-teal-400 font-semibold">
+      <section className="p-5 sm:p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-4">
+        <div className="space-y-0.5">
+          <span className="text-xs font-mono uppercase text-blue-400 font-medium">
             System Design Analysis
           </span>
-          <h3 className="text-xl font-bold text-white">
+          <h3 className="text-base font-bold text-zinc-100">
             Engineering Decisions & Technical Tradeoffs
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <h4 className="text-xs font-mono font-bold uppercase text-[#a1a1a1]">
+            <h4 className="text-xs font-mono font-semibold uppercase text-zinc-400">
               Key Decisions
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-[#a1a1a1]">
+            <ul className="space-y-1.5 text-xs text-zinc-400">
               {project.engineeringDecisions.map((dec, idx) => (
-                <li key={idx} className="p-3 rounded-xl bg-[#151515] border border-white/5">
+                <li key={idx} className="p-2.5 rounded-xl bg-zinc-950/70 border border-zinc-800/70 leading-relaxed">
                   {dec}
                 </li>
               ))}
@@ -280,12 +272,12 @@ export function ProjectDetailPage({ project, onBack }: ProjectDetailPageProps) {
           </div>
 
           <div className="space-y-2">
-            <h4 className="text-xs font-mono font-bold uppercase text-[#a1a1a1]">
+            <h4 className="text-xs font-mono font-semibold uppercase text-zinc-400">
               Architectural Tradeoffs
             </h4>
-            <ul className="space-y-2 text-xs sm:text-sm text-[#a1a1a1]">
+            <ul className="space-y-1.5 text-xs text-zinc-400">
               {project.tradeoffs.map((tr, idx) => (
-                <li key={idx} className="p-3 rounded-xl bg-[#151515] border border-white/5">
+                <li key={idx} className="p-2.5 rounded-xl bg-zinc-950/70 border border-zinc-800/70 leading-relaxed">
                   {tr}
                 </li>
               ))}
@@ -295,27 +287,27 @@ export function ProjectDetailPage({ project, onBack }: ProjectDetailPageProps) {
       </section>
 
       {/* Lessons Learned & Future Roadmap */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="p-6 rounded-[32px] bg-[#0f0f0f] border border-white/10 space-y-3">
-          <h3 className="text-base font-bold text-white flex items-center gap-2">
-            <Lightbulb className="w-4 h-4 text-amber-400" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-2.5">
+          <h3 className="text-sm font-bold text-zinc-100 flex items-center gap-1.5">
+            <Lightbulb className="w-3.5 h-3.5 text-amber-400" />
             <span>Lessons Learned</span>
           </h3>
-          <ul className="space-y-2 text-xs sm:text-sm text-[#a1a1a1]">
+          <ul className="space-y-1.5 text-xs text-zinc-400">
             {project.lessonsLearned.map((les, idx) => (
-              <li key={idx}>&bull; {les}</li>
+              <li key={idx} className="leading-relaxed">&bull; {les}</li>
             ))}
           </ul>
         </div>
 
-        <div className="p-6 rounded-[32px] bg-[#0f0f0f] border border-white/10 space-y-3">
-          <h3 className="text-base font-bold text-white flex items-center gap-2">
-            <Compass className="w-4 h-4 text-teal-400" />
+        <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-2.5">
+          <h3 className="text-sm font-bold text-zinc-100 flex items-center gap-1.5">
+            <Compass className="w-3.5 h-3.5 text-blue-400" />
             <span>Future Improvements</span>
           </h3>
-          <ul className="space-y-2 text-xs sm:text-sm text-[#a1a1a1]">
+          <ul className="space-y-1.5 text-xs text-zinc-400">
             {project.futureRoadmap.map((rm, idx) => (
-              <li key={idx}>&bull; {rm}</li>
+              <li key={idx} className="leading-relaxed">&bull; {rm}</li>
             ))}
           </ul>
         </div>
@@ -323,3 +315,4 @@ export function ProjectDetailPage({ project, onBack }: ProjectDetailPageProps) {
     </div>
   );
 }
+

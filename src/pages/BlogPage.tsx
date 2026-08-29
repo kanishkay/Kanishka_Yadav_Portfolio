@@ -1,36 +1,37 @@
 import React from 'react';
-import { BookOpen, Clock, Sparkles } from 'lucide-react';
+import { BookOpen, Clock } from 'lucide-react';
 
 export function BlogPage() {
   return (
-    <div id="writing" className="space-y-8 scroll-mt-24 pt-6">
+    <div className="space-y-6">
       {/* Header */}
-      <div className="space-y-2">
-        <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-widest text-teal-400">
+      <div className="space-y-1">
+        <div className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-blue-400">
           <BookOpen className="w-3.5 h-3.5" />
-          <span>Technical Writing & Notes</span>
+          <span>Technical Notes</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-bold text-zinc-100 tracking-tight">
           Technical Writing
         </h2>
       </div>
 
       {/* Main Announcement Card */}
-      <div className="p-8 sm:p-10 rounded-[32px] bg-[#0f0f11] border border-white/10 space-y-6 shadow-xl text-center max-w-3xl mx-auto my-4">
-        <div className="inline-flex p-3 rounded-2xl bg-white/5 border border-white/10 text-teal-400">
-          <BookOpen className="w-6 h-6" />
+      <div className="p-8 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-4 shadow-sm text-center max-w-2xl mx-auto my-2">
+        <div className="inline-flex p-3 rounded-xl bg-zinc-800/80 border border-zinc-700/60 text-blue-400">
+          <BookOpen className="w-5 h-5" />
         </div>
 
-        <p className="text-base sm:text-lg text-[#d4d4d8] leading-relaxed font-normal max-w-xl mx-auto">
+        <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal max-w-lg mx-auto">
           I&apos;m currently documenting my engineering work. Long-form project retrospectives and technical deep dives will be published here.
         </p>
 
         {/* Coming Soon Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-bold text-teal-300">
-          <Clock className="w-3.5 h-3.5 text-teal-400 animate-pulse" />
-          <span>Coming Soon</span>
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-800/60 border border-zinc-700/50 text-xs font-mono font-medium text-zinc-300">
+          <Clock className="w-3.5 h-3.5 text-blue-400" />
+          <span>In Progress</span>
         </div>
       </div>
     </div>
   );
 }
+

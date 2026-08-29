@@ -4,48 +4,49 @@ import { EDUCATION, CERTIFICATIONS } from '../data/portfolioData';
 
 export function EducationSection() {
   return (
-    <section id="education" className="space-y-10 py-6">
+    <div className="space-y-6">
       {/* Header */}
-      <div className="space-y-4">
-        <span className="text-xs font-mono font-semibold uppercase tracking-widest text-teal-400">
-          Academic Foundations
-        </span>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+      <div className="space-y-1">
+        <div className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-blue-400">
+          <GraduationCap className="w-3.5 h-3.5 text-blue-400" />
+          <span>Academic Foundations</span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-bold text-zinc-100 tracking-tight">
           Education & Fellowship
         </h2>
-        <p className="text-[#a1a1a1] max-w-2xl text-sm sm:text-base">
+        <p className="text-zinc-400 max-w-2xl text-xs sm:text-sm leading-relaxed">
           Academic education at San José State University and machine learning fellowship training with Break Through Tech AI.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {EDUCATION.map((edu, idx) => (
           <div
             key={idx}
-            className="p-8 rounded-[32px] bg-[#0f0f0f] border border-white/10 space-y-6 shadow-xl relative overflow-hidden flex flex-col justify-between"
+            className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-4 shadow-sm relative overflow-hidden flex flex-col justify-between hover:border-zinc-700 transition-colors"
           >
-            <div className="space-y-4">
-              <div className="flex items-start justify-between gap-4">
+            <div className="space-y-3.5">
+              <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 rounded-2xl bg-white/5 text-teal-400 border border-white/10">
-                    <GraduationCap className="w-6 h-6" />
+                  <div className="p-2.5 rounded-xl bg-zinc-800/80 text-blue-400 border border-zinc-700/60">
+                    <GraduationCap className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">{edu.institution}</h3>
-                    <p className="text-xs font-mono text-teal-400">
+                    <h3 className="text-base font-bold text-zinc-100">{edu.institution}</h3>
+                    <p className="text-xs font-mono text-blue-400">
                       {edu.degree} {edu.major ? `in ${edu.major}` : ''}
                     </p>
                   </div>
                 </div>
-                <span className="text-xs font-mono px-3 py-1 rounded-full bg-white/5 text-[#a1a1a1] border border-white/10 shrink-0">
+                <span className="text-xs font-mono px-2.5 py-0.5 rounded-md bg-zinc-800/60 text-zinc-400 border border-zinc-700/50 shrink-0">
                   {edu.period}
                 </span>
               </div>
 
               {edu.location && (
-                <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[#a1a1a1] pt-1">
-                  <span className="flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-teal-400" />
+                <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-400 pt-0.5">
+                  <span className="flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-zinc-500" />
                     {edu.location}
                   </span>
                 </div>
@@ -53,16 +54,16 @@ export function EducationSection() {
 
               {/* Honors & Distinction */}
               {edu.honors && edu.honors.length > 0 && (
-                <div className="space-y-2 pt-2">
-                  <span className="text-xs font-mono font-bold uppercase text-[#717171] flex items-center gap-1.5">
+                <div className="space-y-1.5 pt-1">
+                  <span className="text-xs font-mono font-medium text-zinc-400 flex items-center gap-1.5 uppercase tracking-wider">
                     <Award className="w-3.5 h-3.5 text-amber-400" />
                     Honors & Distinctions
                   </span>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5">
                     {edu.honors.map((honor, hIdx) => (
                       <span
                         key={hIdx}
-                        className="px-3 py-1 rounded-xl text-xs bg-amber-500/10 text-amber-300 border border-amber-500/20 flex items-center gap-1.5"
+                        className="px-2.5 py-0.5 rounded-md text-xs bg-amber-500/10 text-amber-300 border border-amber-500/20 flex items-center gap-1.5"
                       >
                         <CheckCircle2 className="w-3 h-3 text-amber-400 shrink-0" />
                         <span>{honor}</span>
@@ -74,16 +75,16 @@ export function EducationSection() {
 
               {/* Relevant Coursework */}
               {edu.relevantCoursework && edu.relevantCoursework.length > 0 && (
-                <div className="space-y-2 pt-2">
-                  <span className="text-xs font-mono font-bold uppercase text-[#717171] flex items-center gap-1.5">
+                <div className="space-y-1.5 pt-1">
+                  <span className="text-xs font-mono font-medium text-zinc-400 flex items-center gap-1.5 uppercase tracking-wider">
                     <BookOpen className="w-3.5 h-3.5 text-blue-400" />
                     Focus Areas
                   </span>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1">
                     {edu.relevantCoursework.map((course, cIdx) => (
                       <span
                         key={cIdx}
-                        className="px-2.5 py-1 rounded-lg text-xs font-mono bg-[#151515] text-[#a1a1a1] border border-white/5"
+                        className="px-2 py-0.5 rounded text-xs font-mono bg-zinc-950/80 text-zinc-400 border border-zinc-800"
                       >
                         {course}
                       </span>
@@ -98,23 +99,23 @@ export function EducationSection() {
 
       {/* Certifications Banner */}
       {CERTIFICATIONS && CERTIFICATIONS.length > 0 && (
-        <div className="p-6 rounded-[32px] bg-[#0f0f0f] border border-white/10 space-y-4">
+        <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800/80 space-y-3 shadow-sm">
           <div className="flex items-center gap-2">
-            <Award className="w-5 h-5 text-teal-400" />
-            <h3 className="text-base font-bold text-white">Certifications & Credentials</h3>
+            <Award className="w-4 h-4 text-blue-400" />
+            <h3 className="text-sm font-bold text-zinc-100">Certifications & Credentials</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {CERTIFICATIONS.map((cert) => (
-              <div key={cert.id} className="p-4 rounded-2xl bg-[#151515] border border-white/5 space-y-2">
+              <div key={cert.id} className="p-3.5 rounded-xl bg-zinc-950/60 border border-zinc-800/80 space-y-1.5">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-sm font-bold text-white">{cert.title}</h4>
-                  <span className="text-xs font-mono text-teal-400">{cert.issueDate}</span>
+                  <h4 className="text-xs font-bold text-zinc-100">{cert.title}</h4>
+                  <span className="text-[11px] font-mono text-blue-400">{cert.issueDate}</span>
                 </div>
-                <p className="text-xs text-[#717171] font-mono">{cert.issuer} {cert.academicAssociation && `(${cert.academicAssociation})`}</p>
-                <p className="text-xs text-[#a1a1a1] leading-relaxed">{cert.description}</p>
-                <div className="flex flex-wrap gap-1 pt-1">
+                <p className="text-[11px] text-zinc-500 font-mono">{cert.issuer} {cert.academicAssociation && `(${cert.academicAssociation})`}</p>
+                <p className="text-xs text-zinc-400 leading-relaxed">{cert.description}</p>
+                <div className="flex flex-wrap gap-1 pt-0.5">
                   {cert.skills.map((s, sIdx) => (
-                    <span key={sIdx} className="px-2 py-0.5 rounded text-[10px] font-mono bg-white/5 text-[#a1a1a1]">
+                    <span key={sIdx} className="px-1.5 py-0.5 rounded text-[10px] font-mono bg-zinc-800/60 text-zinc-400">
                       {s}
                     </span>
                   ))}
@@ -124,6 +125,7 @@ export function EducationSection() {
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }
+

@@ -11,77 +11,78 @@ interface HeroSectionProps {
 
 export function HeroSection({ scrollToSection, onOpenAIAssistant }: HeroSectionProps) {
   return (
-    <section id="home" className="relative min-h-[82vh] flex flex-col justify-center pt-6 sm:pt-10 scroll-mt-24">
-      <div className="max-w-4xl space-y-6">
+    <section id="home" className="relative min-h-[75vh] flex flex-col justify-center pt-8 sm:pt-14 scroll-mt-24">
+      <div className="max-w-3xl space-y-6">
         {/* Availability Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-[#a1a1a1] text-xs font-mono font-medium"
+          transition={{ duration: 0.2 }}
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/80 border border-zinc-800 text-zinc-300 text-xs font-mono font-medium"
         >
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-emerald-500" />
           <span>Seeking Summer 2027 Internships & 2027 New-Grad Opportunities</span>
         </motion.div>
 
         {/* Primary Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="space-y-4"
+          transition={{ delay: 0.05, duration: 0.2 }}
+          className="space-y-3"
         >
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.08]">
-            Hi, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400">Kanishka</span>.
+          <h1 className="text-4xl sm:text-6xl font-extrabold text-zinc-100 tracking-tight leading-[1.1]">
+            Hi, I&apos;m Kanishka.
           </h1>
 
-          <p className="text-2xl sm:text-4xl font-semibold text-white max-w-3xl leading-snug tracking-tight">
+          <p className="text-xl sm:text-3xl font-semibold text-zinc-200 leading-snug tracking-tight">
             Building practical AI systems with LLMs, agentic workflows, retrieval, and modern software engineering.
           </p>
 
-          <div className="flex flex-wrap items-center gap-2 pt-1 text-lg sm:text-2xl font-medium text-[#a1a1a1]">
-            <span>Focusing as an aspiring</span>
+          <div className="flex flex-wrap items-center gap-2 pt-1 text-base sm:text-xl font-medium text-zinc-400">
+            <span>Aspiring</span>
             <RotatingRoles roles={PERSONAL_INFO.rolesRotating} />
           </div>
         </motion.div>
 
         {/* Supporting Description */}
         <motion.p
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-base sm:text-xl font-normal text-[#a1a1a1] max-w-3xl leading-relaxed"
+          transition={{ delay: 0.1, duration: 0.2 }}
+          className="text-sm sm:text-base font-normal text-zinc-400 max-w-2xl leading-relaxed"
         >
           I&apos;m a Data Science student at San José State University building practical AI systems with LLMs, agentic workflows, retrieval, and scalable software engineering. My work focuses on developer tools, intelligent automation, and AI systems designed for real-world use.
         </motion.p>
 
         {/* Primary Calls to Action */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-wrap items-center gap-3 pt-4"
+          transition={{ delay: 0.15, duration: 0.2 }}
+          className="flex flex-wrap items-center gap-2.5 pt-2"
         >
           <button
             onClick={() => scrollToSection('currently-building')}
-            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white text-black font-bold text-sm shadow-[0_0_25px_rgba(255,255,255,0.12)] hover:bg-[#e1e1e1] transition-all focus:outline-none cursor-pointer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-100 text-zinc-950 font-semibold text-xs sm:text-sm hover:bg-white transition-colors focus:outline-none cursor-pointer"
           >
-            <span>Explore My Work</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>Explore Work</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </button>
 
           <button
             onClick={() => scrollToSection('resume')}
-            className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-[#111111] border border-white/10 text-white hover:border-white/30 font-medium text-sm transition-all focus:outline-none cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 text-zinc-200 font-medium text-xs sm:text-sm transition-colors focus:outline-none cursor-pointer"
           >
-            <FileText className="w-4 h-4 text-blue-400" />
+            <FileText className="w-3.5 h-3.5 text-zinc-400" />
             <span>Résumé</span>
           </button>
 
           <button
             onClick={() => scrollToSection('contact')}
-            className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-[#111111] border border-white/10 text-white hover:border-white/30 font-medium text-sm transition-all focus:outline-none cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 text-zinc-200 font-medium text-xs sm:text-sm transition-colors focus:outline-none cursor-pointer"
           >
-            <Mail className="w-4 h-4 text-emerald-400" />
+            <Mail className="w-3.5 h-3.5 text-zinc-400" />
             <span>Contact</span>
           </button>
 
@@ -89,31 +90,32 @@ export function HeroSection({ scrollToSection, onOpenAIAssistant }: HeroSectionP
             href={PERSONAL_INFO.socials.github}
             target="_blank"
             rel="noreferrer"
-            className="p-3.5 rounded-xl bg-[#111111] border border-white/10 text-[#a1a1a1] hover:text-white hover:border-white/30 transition-all"
+            className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-colors"
             aria-label="GitHub Profile"
           >
-            <Github className="w-5 h-5" />
+            <Github className="w-4 h-4" />
           </a>
 
           <a
             href={PERSONAL_INFO.socials.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="p-3.5 rounded-xl bg-[#111111] border border-white/10 text-[#a1a1a1] hover:text-white hover:border-white/30 transition-all"
+            className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-colors"
             aria-label="LinkedIn Profile"
           >
-            <Linkedin className="w-5 h-5" />
+            <Linkedin className="w-4 h-4" />
           </a>
 
           <button
             onClick={onOpenAIAssistant}
-            className="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 text-white font-medium text-sm transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-blue-500/10 border border-blue-500/20 hover:bg-blue-500/15 text-blue-300 font-medium text-xs sm:text-sm transition-colors cursor-pointer"
           >
-            <Sparkles className="w-4 h-4 text-blue-400" />
-            <span>Ask AI Assistant</span>
+            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+            <span>Ask AI</span>
           </button>
         </motion.div>
       </div>
     </section>
   );
 }
+
