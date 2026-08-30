@@ -7,15 +7,32 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+// Cloud Run provides PORT at runtime. Fall back to 3000 for local development.
+const PORT = Number.parseInt(process.env.PORT || "3000", 10);
 
 app.use(express.json({ limit: "5mb" }));
 
-// Initialize Gemini client server-side
+// Initialize Gemini server-side. In Cloud Run, prefer Vertex AI with the
+// service's Google Cloud identity so no API key is needed.
 const apiKey = process.env.GEMINI_API_KEY;
+const useVertexAI = process.env.GOOGLE_GENAI_USE_VERTEXAI === "true";
+const cloudProject = process.env.GOOGLE_CLOUD_PROJECT;
+const cloudLocation = process.env.GOOGLE_CLOUD_LOCATION || "global";
 let aiClient: GoogleGenAI | null = null;
 
-if (apiKey) {
+if (useVertexAI && cloudProject) {
+  aiClient = new GoogleGenAI({
+    vertexai: true,
+    project: cloudProject,
+    location: cloudLocation,
+    httpOptions: {
+      apiVersion: "v1",
+      headers: {
+        "User-Agent": "kanishka-portfolio",
+      },
+    },
+  });
+} else if (apiKey) {
   aiClient = new GoogleGenAI({
     apiKey: apiKey,
     httpOptions: {
@@ -25,7 +42,7 @@ if (apiKey) {
     },
   });
 } else {
-  console.warn("GEMINI_API_KEY environment variable is not defined. AI Assistant will run in fallback mode.");
+  console.warn("Gemini is not configured. AI Assistant will run in fallback mode.");
 }
 
 // System prompt grounding for Kanishka Yadav's Portfolio Assistant
@@ -56,7 +73,7 @@ Verified Portfolio Dataset:
   - AI & Machine Learning: TensorFlow, PyTorch, Scikit-learn, SentenceTransformers, NLTK, IBM watsonx.ai, NVIDIA Nemotron, Gemini API, Machine learning, Deep learning, Natural language processing, Large language models, Retrieval-Augmented Generation, Semantic search, Vector embeddings, Multi-agent systems, Computer-use agents, Context engineering, AI evaluation, Structured-output validation, Explainable AI, Human-in-the-loop AI
   - Backend & Web: Flask, Express, Next.js, React, Vite, REST APIs, API integration
   - Databases & Storage: PostgreSQL, MySQL, SQLite, sqlite-vec, Flat-file JSON storage, Relational database design
-  - Infrastructure & Tools: Git, GitHub, Docker, Docker Compose, Kubernetes, Ansible, Vercel, Google Cloud Run, Visual Studio Code
+  - Infrastructure & Tools: Git, GitHub, Docker, Docker Compose, Kubernetes, Ansible, Google Cloud Run, Visual Studio Code
 - Contact: Email: 11kanishkay@gmail.com | LinkedIn: linkedin.com/in/kanishkayadvv | GitHub: github.com/kanishkay | Instagram: instagram.com/kanishkay_
 
 Goal: Respond concisely, accurately, and professionally to visitors using ONLY the verified facts above.`;

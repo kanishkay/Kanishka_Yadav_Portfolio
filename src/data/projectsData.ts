@@ -393,7 +393,6 @@ def init_db(db_path: str):
       'Gemini API',
       'Zod',
       'Docker',
-      'Vercel',
       'Google Cloud Run',
       'Canned fallback engine',
       'Heuristic engine',

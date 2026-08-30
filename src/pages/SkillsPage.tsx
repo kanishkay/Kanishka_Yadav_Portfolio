@@ -36,7 +36,6 @@ const SKILL_USAGE_MAP: Record<string, string[]> = {
   'Explainable AI': ['AGENTIS'],
   'Vector embeddings': ['Acron'],
   'NLTK': ['YouTube Spam Detection NLP'],
-  'Vercel': ['ContextMeter'],
   'Google Cloud Run': ['ContextMeter'],
 };
 
@@ -156,4 +155,3 @@ export function SkillsPage() {
     </div>
   );
 }
-
