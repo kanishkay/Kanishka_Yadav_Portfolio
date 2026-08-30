@@ -133,11 +133,10 @@ export function ResumePage() {
             <p><strong className="text-zinc-200">AI & Machine Learning:</strong> TensorFlow, PyTorch, Scikit-learn, SentenceTransformers, NLTK, IBM watsonx.ai, NVIDIA Nemotron, Gemini API, RAG, Semantic search, Vector embeddings, Multi-agent systems, Computer-use agents, Explainable AI</p>
             <p><strong className="text-zinc-200">Backend & Web:</strong> Flask, Express, Next.js, React, Vite, REST APIs, API integration</p>
             <p><strong className="text-zinc-200">Databases & Storage:</strong> PostgreSQL, MySQL, SQLite, sqlite-vec, Flat-file JSON storage, Relational database design</p>
-            <p><strong className="text-zinc-200">Infrastructure & Tools:</strong> Git, GitHub, Docker, Docker Compose, Kubernetes, Ansible, Vercel, Google Cloud Run, Visual Studio Code</p>
+            <p><strong className="text-zinc-200">Infrastructure & Tools:</strong> Git, GitHub, Docker, Docker Compose, Kubernetes, Ansible, Google Cloud Run, Visual Studio Code</p>
           </div>
         </section>
       </div>
     </div>
   );
 }
-

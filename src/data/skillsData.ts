@@ -63,7 +63,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       'Ansible',
       'Claude Code',
       'Git',
-      'Vercel'
+      'Google Cloud Run'
     ]
   }
 ];

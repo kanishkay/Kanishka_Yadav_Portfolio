@@ -73,7 +73,7 @@ Verified Portfolio Dataset:
   - AI & Machine Learning: TensorFlow, PyTorch, Scikit-learn, SentenceTransformers, NLTK, IBM watsonx.ai, NVIDIA Nemotron, Gemini API, Machine learning, Deep learning, Natural language processing, Large language models, Retrieval-Augmented Generation, Semantic search, Vector embeddings, Multi-agent systems, Computer-use agents, Context engineering, AI evaluation, Structured-output validation, Explainable AI, Human-in-the-loop AI
   - Backend & Web: Flask, Express, Next.js, React, Vite, REST APIs, API integration
   - Databases & Storage: PostgreSQL, MySQL, SQLite, sqlite-vec, Flat-file JSON storage, Relational database design
-  - Infrastructure & Tools: Git, GitHub, Docker, Docker Compose, Kubernetes, Ansible, Vercel, Google Cloud Run, Visual Studio Code
+  - Infrastructure & Tools: Git, GitHub, Docker, Docker Compose, Kubernetes, Ansible, Google Cloud Run, Visual Studio Code
 - Contact: Email: 11kanishkay@gmail.com | LinkedIn: linkedin.com/in/kanishkayadvv | GitHub: github.com/kanishkay | Instagram: instagram.com/kanishkay_
 
 Goal: Respond concisely, accurately, and professionally to visitors using ONLY the verified facts above.`;
