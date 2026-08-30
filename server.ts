@@ -7,15 +7,32 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+// Cloud Run provides PORT at runtime. Fall back to 3000 for local development.
+const PORT = Number.parseInt(process.env.PORT || "3000", 10);
 
 app.use(express.json({ limit: "5mb" }));
 
-// Initialize Gemini client server-side
+// Initialize Gemini server-side. In Cloud Run, prefer Vertex AI with the
+// service's Google Cloud identity so no API key is needed.
 const apiKey = process.env.GEMINI_API_KEY;
+const useVertexAI = process.env.GOOGLE_GENAI_USE_VERTEXAI === "true";
+const cloudProject = process.env.GOOGLE_CLOUD_PROJECT;
+const cloudLocation = process.env.GOOGLE_CLOUD_LOCATION || "global";
 let aiClient: GoogleGenAI | null = null;
 
-if (apiKey) {
+if (useVertexAI && cloudProject) {
+  aiClient = new GoogleGenAI({
+    vertexai: true,
+    project: cloudProject,
+    location: cloudLocation,
+    httpOptions: {
+      apiVersion: "v1",
+      headers: {
+        "User-Agent": "kanishka-portfolio",
+      },
+    },
+  });
+} else if (apiKey) {
   aiClient = new GoogleGenAI({
     apiKey: apiKey,
     httpOptions: {
@@ -25,7 +42,7 @@ if (apiKey) {
     },
   });
 } else {
-  console.warn("GEMINI_API_KEY environment variable is not defined. AI Assistant will run in fallback mode.");
+  console.warn("Gemini is not configured. AI Assistant will run in fallback mode.");
 }
 
 // System prompt grounding for Kanishka Yadav's Portfolio Assistant
