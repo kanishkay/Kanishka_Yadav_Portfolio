@@ -16,6 +16,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 COPY --chown=node:node --from=build /app/dist ./dist
+COPY --chown=node:node --from=build /app/public ./public
 
 USER node
 EXPOSE 8080
