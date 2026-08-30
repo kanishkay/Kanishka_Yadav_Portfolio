@@ -53,8 +53,8 @@ You may only answer using facts present in the verified portfolio dataset below.
 
 Verified Portfolio Dataset:
 - Name: Kanishka Yadav
-- Status: Data Science student at San José State University (SJSU), B.S. Data Science, Expected Graduation May 2027, GPA 3.72.
-- Fellowship: Break Through Tech AI Fellow — Machine Learning Foundations e-Certificate.
+- Status: Data Science student at San Jose State University (SJSU), B.S. Data Science, Expected Graduation May 2027.
+- Fellowship: Break Through Tech AI Fellow.
 - Seeking: Summer 2027 AI Engineering, Machine Learning, Backend Engineering, Applied AI, MLOps, Data Science internships, and 2027 New Grad Software Engineering roles.
 - Work Experience (Exactly 2 roles):
   1. AI Software Developer Intern @ SAP America, Inc. (June 2026 – August 2026, San Ramon, CA): Supported cloud infrastructure automation by developing and maintaining deployment workflows using Python, Ansible, Docker, and Kubernetes.
@@ -78,6 +78,17 @@ Verified Portfolio Dataset:
 
 Goal: Respond concisely, accurately, and professionally to visitors using ONLY the verified facts above.`;
 
+// Public static assets
+const publicPath = path.join(process.cwd(), "public");
+app.use(express.static(publicPath));
+
+app.get("/resume.pdf", (_req, res) => {
+  const filePath = path.join(publicPath, "resume.pdf");
+  res.setHeader("Content-Type", "application/pdf");
+  res.setHeader("Content-Disposition", 'inline; filename="Kanishka_Yadav_Resume.pdf"');
+  res.sendFile(filePath);
+});
+
 // API Health check
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
@@ -94,7 +105,7 @@ app.post("/api/chat", async (req, res) => {
 
     if (!aiClient) {
       return res.json({
-        reply: "Kanishka's AI Assistant is currently running in fallback mode. Kanishka Yadav is a Data Science student at SJSU (GPA 3.72, Expected May 2027) seeking Summer 2027 AI, ML, Backend, and Data Science internships. Contact Kanishka directly at 11kanishkay@gmail.com."
+        reply: "Kanishka's AI Assistant is currently running in fallback mode. Kanishka Yadav is a Data Science student at SJSU (Expected May 2027) seeking Summer 2027 AI, ML, Backend, and Data Science internships. Contact Kanishka directly at 11kanishkay@gmail.com."
       });
     }
 

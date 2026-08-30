@@ -1,121 +1,103 @@
 import React from 'react';
-import { ArrowRight, FileText, Mail, Github, Linkedin, Sparkles } from 'lucide-react';
-import { motion } from 'motion/react';
+import { ArrowUpRight, Github, Linkedin } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { RotatingRoles } from './RotatingRoles';
 
 interface HeroSectionProps {
-  scrollToSection: (sectionId: string) => void;
-  onOpenAIAssistant: () => void;
+  onNavigate?: (sectionId: string) => void;
 }
 
-export function HeroSection({ scrollToSection, onOpenAIAssistant }: HeroSectionProps) {
+export function HeroSection({ onNavigate }: HeroSectionProps) {
+  const handleScrollToWork = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('work');
+    } else {
+      document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleScrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('contact');
+    } else {
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="home" className="relative min-h-[75vh] flex flex-col justify-center pt-8 sm:pt-14 scroll-mt-24">
-      <div className="max-w-3xl space-y-6">
-        {/* Availability Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.2 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/80 border border-zinc-800 text-zinc-300 text-xs font-mono font-medium"
-        >
-          <span className="w-2 h-2 rounded-full bg-emerald-500" />
-          <span>Seeking Summer 2027 Internships & 2027 New-Grad Opportunities</span>
-        </motion.div>
-
-        {/* Primary Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.05, duration: 0.2 }}
-          className="space-y-3"
-        >
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-zinc-100 tracking-tight leading-[1.1]">
-            Hi, I&apos;m Kanishka.
+    <section className="pt-8 sm:pt-12 pb-8 sm:pb-10 border-b border-[#DDD9D0] dark:border-[#283244]">
+      <div className="space-y-5 max-w-[680px] mx-auto text-center">
+        {/* Name & Academic Affiliation */}
+        <div className="space-y-1">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-normal text-[#101A2E] dark:text-[#F3EFE6] tracking-tight leading-[1.15]">
+            {PERSONAL_INFO.name}
           </h1>
-
-          <p className="text-xl sm:text-3xl font-semibold text-zinc-200 leading-snug tracking-tight">
-            Building practical AI systems with LLMs, agentic workflows, retrieval, and modern software engineering.
+          <p className="text-sm text-[#667085] dark:text-[#AAB0BA] font-sans tracking-wide">
+            Data Science @ San José State University
           </p>
+        </div>
 
-          <div className="flex flex-wrap items-center gap-2 pt-1 text-base sm:text-xl font-medium text-zinc-400">
-            <span>Aspiring</span>
-            <RotatingRoles roles={PERSONAL_INFO.rolesRotating} />
-          </div>
-        </motion.div>
-
-        {/* Supporting Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.2 }}
-          className="text-sm sm:text-base font-normal text-zinc-400 max-w-2xl leading-relaxed"
-        >
-          I&apos;m a Data Science student at San José State University building practical AI systems with LLMs, agentic workflows, retrieval, and scalable software engineering. My work focuses on developer tools, intelligent automation, and AI systems designed for real-world use.
-        </motion.p>
-
-        {/* Primary Calls to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.2 }}
-          className="flex flex-wrap items-center gap-2.5 pt-2"
-        >
+        {/* Primary Actions & Subtle Contact Link */}
+        <div className="pt-1 flex flex-wrap items-center justify-center gap-4">
           <button
-            onClick={() => scrollToSection('currently-building')}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-100 text-zinc-950 font-semibold text-xs sm:text-sm hover:bg-white transition-colors focus:outline-none cursor-pointer"
+            onClick={handleScrollToWork}
+            className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#101A2E] hover:bg-[#1B2940] text-[#F7F5F0] dark:bg-[#F3EFE6] dark:hover:bg-white dark:text-[#101A2E] text-xs font-medium rounded-sm transition-colors cursor-pointer"
           >
-            <span>Explore Work</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <span>View Selected Work</span>
+            <span className="text-[11px] leading-none text-[#C5AA76] dark:text-[#B6904D]">↓</span>
           </button>
 
-          <button
-            onClick={() => scrollToSection('resume')}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 text-zinc-200 font-medium text-xs sm:text-sm transition-colors focus:outline-none cursor-pointer"
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 px-4 py-2 border border-[#DDD9D0] hover:border-[#B6904D] dark:border-[#283244] dark:hover:border-[#C2A164] bg-transparent hover:bg-[#FCFBF8] dark:hover:bg-[#121C2C] text-[#101A2E] dark:text-[#F3EFE6] text-xs font-medium rounded-sm transition-colors"
           >
-            <FileText className="w-3.5 h-3.5 text-zinc-400" />
             <span>Résumé</span>
-          </button>
+            <ArrowUpRight className="w-3 h-3 text-[#B6904D] dark:text-[#C2A164] opacity-80" />
+          </a>
 
           <button
-            onClick={() => scrollToSection('contact')}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 text-zinc-200 font-medium text-xs sm:text-sm transition-colors focus:outline-none cursor-pointer"
+            onClick={handleScrollToContact}
+            className="text-xs text-[#667085] dark:text-[#AAB0BA] hover:text-[#101A2E] dark:hover:text-[#F3EFE6] underline underline-offset-4 decoration-[#DDD9D0] dark:decoration-[#283244] hover:decoration-[#B6904D] dark:hover:decoration-[#C2A164] transition-colors cursor-pointer ml-1"
           >
-            <Mail className="w-3.5 h-3.5 text-zinc-400" />
-            <span>Contact</span>
+            Contact
           </button>
+        </div>
 
+        {/* Direct Location & Profile Channels */}
+        <div className="pt-2 text-xs text-[#667085] dark:text-[#AAB0BA] flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-sans">
+          <span>{PERSONAL_INFO.location}</span>
+          <span className="text-[#DDD9D0] dark:text-[#283244]">&middot;</span>
           <a
-            href={PERSONAL_INFO.socials.github}
+            href={`mailto:${PERSONAL_INFO.email}`}
+            className="text-[#667085] dark:text-[#AAB0BA] hover:text-[#101A2E] dark:hover:text-[#F3EFE6] transition-colors underline underline-offset-4 decoration-[#DDD9D0] dark:decoration-[#283244] hover:decoration-[#B6904D]"
+          >
+            Email
+          </a>
+          <span className="text-[#DDD9D0] dark:text-[#283244]">&middot;</span>
+          <a
+            href={PERSONAL_INFO.github}
             target="_blank"
-            rel="noreferrer"
-            className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-colors"
+            rel="noopener noreferrer"
             aria-label="GitHub Profile"
+            className="text-[#667085] dark:text-[#AAB0BA] hover:text-[#101A2E] dark:hover:text-[#F3EFE6] transition-colors inline-flex items-center"
           >
-            <Github className="w-4 h-4" />
+            <Github className="w-3.5 h-3.5" />
           </a>
-
+          <span className="text-[#DDD9D0] dark:text-[#283244]">&middot;</span>
           <a
-            href={PERSONAL_INFO.socials.linkedin}
+            href={PERSONAL_INFO.linkedin}
             target="_blank"
-            rel="noreferrer"
-            className="p-2.5 rounded-lg bg-zinc-900/60 border border-zinc-800 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 transition-colors"
+            rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
+            className="text-[#667085] dark:text-[#AAB0BA] hover:text-[#101A2E] dark:hover:text-[#F3EFE6] transition-colors inline-flex items-center"
           >
-            <Linkedin className="w-4 h-4" />
+            <Linkedin className="w-3.5 h-3.5" />
           </a>
-
-          <button
-            onClick={onOpenAIAssistant}
-            className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg bg-blue-500/10 border border-blue-500/20 hover:bg-blue-500/15 text-blue-300 font-medium text-xs sm:text-sm transition-colors cursor-pointer"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-            <span>Ask AI</span>
-          </button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
-
